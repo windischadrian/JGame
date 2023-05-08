@@ -1,1 +1,1 @@
-"# JGame" 
+"# main.JGame" 
