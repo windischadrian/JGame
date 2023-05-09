@@ -1,6 +1,7 @@
 package main;
 
 import entity.Player;
+import entity.Target;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this, keyHandler);
+    Target target = new Target(this);
 
 
     public GamePanel() {
@@ -80,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2d = (Graphics2D) g;
 
         player.draw(g2d);
+        target.draw(g2d);
 
         g2d.dispose();
     }
