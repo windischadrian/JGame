@@ -4,7 +4,6 @@ import entity.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.security.Key;
 import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -16,8 +15,8 @@ public class GamePanel extends JPanel implements Runnable{
     public final int tileSize = originalTileSize * scale;
     final int maxScreenColumns = 16;
     final int maxScreenRows = 12;
-    final int screenWidth = tileSize * maxScreenColumns;
-    final int screenHeight = tileSize * maxScreenRows;
+    public final int screenWidth = tileSize * maxScreenColumns;
+    public final int screenHeight = tileSize * maxScreenRows;
 
     //Player coords + movement
     int playerX = 100;
