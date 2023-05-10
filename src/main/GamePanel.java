@@ -2,6 +2,8 @@ package main;
 
 import entity.Player;
 import entity.Target;
+import utils.JGameConfig;
+import utils.JGameUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,33 +12,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
+import static utils.JGameConfig.*;
+
 public class GamePanel extends JPanel implements Runnable{
-
-    //Window config
-    final int originalTileSize = 16;
-    final int scale = 3;
-
-    public final int tileSize = originalTileSize * scale; //48
-    final int maxScreenColumns = 16;
-    final int maxScreenRows = 12;
-    public final int screenWidth = tileSize * maxScreenColumns; //768
-    public final int screenHeight = tileSize * maxScreenRows; //576
-
-    public final int sideWallsSize = 52;
-    public final int transversalWallsSize = 36;
-
-    final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
-
-    //Player coords + movement
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
-
-    //Game frames per second
-    int gameFPS = 60;
-    int milli = 1000;
-    int frameTime = milli/gameFPS;
-
+    private final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this, keyHandler);
@@ -71,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable{
             try {
                 long t1= System.currentTimeMillis();
 
-                Thread.sleep(frameTime - (t1-t0));
+                Thread.sleep(JGameConfig.frameTime - (t1-t0));
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -81,6 +60,10 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
         player.update();
+        if(player.isColided(target)) {
+            target.x = JGameUtils.randomNumberFromInterval(sideWallsSize, screenWidth - sideWallsSize - tileSize);
+            target.y = JGameUtils.randomNumberFromInterval(transversalWallsSize, screenHeight - transversalWallsSize - tileSize);
+        }
     }
 
     public void paintComponent(Graphics g) {

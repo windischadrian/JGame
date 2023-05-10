@@ -1,10 +1,13 @@
 package entity;
 
 import main.GamePanel;
+import utils.JGameUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
+
+import static utils.JGameConfig.*;
 
 public class Target extends Entity {
 
@@ -17,8 +20,8 @@ public class Target extends Entity {
     }
 
     public void setDefaultValues() {
-        x = 400;
-        y = 300;
+        x = JGameUtils.randomNumberFromInterval(sideWallsSize, screenWidth - sideWallsSize);
+        y = JGameUtils.randomNumberFromInterval(transversalWallsSize, screenHeight - transversalWallsSize);
         try {
             idle = ImageIO.read(getClass().getResourceAsStream("/player/player_down_1.png"));
         } catch (IOException ex) {
@@ -26,11 +29,9 @@ public class Target extends Entity {
         }
     }
 
-    public void update() {
-
-    }
+    public void update() {}
 
     public void draw(Graphics2D g2d) {
-        g2d.drawImage(idle, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2d.drawImage(idle, x, y, tileSize, tileSize, null);
     }
 }
