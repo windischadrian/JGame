@@ -33,19 +33,19 @@ public class Player extends Entity {
     public void update() {
         if(keyHandler.upButton) {
             direction=playerDirection.up;
-            y = Math.max(y - speed, 0);
+            y = Math.max(y - speed, gamePanel.transversalWallsSize);
         }
         if(keyHandler.leftButton) {
             direction=playerDirection.left;
-            x = Math.max(x - speed, 0);
+            x = Math.max(x - speed, gamePanel.sideWallsSize);
         }
         if(keyHandler.downButton) {
             direction=playerDirection.down;
-            y = Math.min(y + speed, gamePanel.screenHeight - gamePanel.tileSize);
+            y = Math.min(y + speed, gamePanel.screenHeight - gamePanel.tileSize - gamePanel.transversalWallsSize);
         }
         if(keyHandler.rightButton) {
             direction=playerDirection.right;
-            x = Math.min(x + speed, gamePanel.screenWidth - gamePanel.tileSize);
+            x = Math.min(x + speed, gamePanel.screenWidth - gamePanel.tileSize - gamePanel.sideWallsSize);
         }
         if(keyHandler.anyButton) playerImage = direction.nextImage();
     }

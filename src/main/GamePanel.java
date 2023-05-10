@@ -3,8 +3,11 @@ package main;
 import entity.Player;
 import entity.Target;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -13,11 +16,16 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16;
     final int scale = 3;
 
-    public final int tileSize = originalTileSize * scale;
+    public final int tileSize = originalTileSize * scale; //48
     final int maxScreenColumns = 16;
     final int maxScreenRows = 12;
-    public final int screenWidth = tileSize * maxScreenColumns;
-    public final int screenHeight = tileSize * maxScreenRows;
+    public final int screenWidth = tileSize * maxScreenColumns; //768
+    public final int screenHeight = tileSize * maxScreenRows; //576
+
+    public final int sideWallsSize = 52;
+    public final int transversalWallsSize = 36;
+
+    final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
 
     //Player coords + movement
     int playerX = 100;
@@ -35,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
     Target target = new Target(this);
 
 
-    public GamePanel() {
+    public GamePanel() throws IOException {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
@@ -78,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+        g.drawImage(backgroundImage, 0, 0, null);
 
         Graphics2D g2d = (Graphics2D) g;
 
