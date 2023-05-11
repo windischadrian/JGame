@@ -16,7 +16,7 @@ import java.util.Objects;
 import static utils.JGameConfig.*;
 
 public class GamePanel extends JPanel implements Runnable{
-    private final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
+//    private final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
