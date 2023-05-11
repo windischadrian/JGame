@@ -2,6 +2,7 @@ package main;
 
 import entity.Player;
 import entity.Target;
+import tile.TileManager;
 import utils.JGameConfig;
 import utils.JGameUtils;
 
@@ -16,6 +17,8 @@ import static utils.JGameConfig.*;
 
 public class GamePanel extends JPanel implements Runnable{
     private final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
+
+    TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this, keyHandler);
@@ -69,10 +72,11 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-        g.drawImage(backgroundImage, 0, 0, null);
+//        g.drawImage(backgroundImage, 0, 0, null);
 
         Graphics2D g2d = (Graphics2D) g;
 
+        tileManager.draw(g2d);
         player.draw(g2d);
         target.draw(g2d);
 

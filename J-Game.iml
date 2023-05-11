@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/res/player" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/res/environment" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/res/npc" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/assets_temp" />
     </content>
     <orderEntry type="inheritedJdk" />

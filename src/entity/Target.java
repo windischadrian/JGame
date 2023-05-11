@@ -1,6 +1,7 @@
 package entity;
 
 import main.GamePanel;
+import utils.JGameConfig;
 import utils.JGameUtils;
 
 import javax.imageio.ImageIO;
@@ -23,7 +24,7 @@ public class Target extends Entity {
         x = JGameUtils.randomNumberFromInterval(sideWallsSize, screenWidth - sideWallsSize);
         y = JGameUtils.randomNumberFromInterval(transversalWallsSize, screenHeight - transversalWallsSize);
         try {
-            idle = ImageIO.read(getClass().getResourceAsStream("/player/player_down_1.png"));
+            idle = ImageIO.read(getClass().getResourceAsStream("/npc/target_1.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
