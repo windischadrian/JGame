@@ -1,7 +1,6 @@
 package tile;
 
 import main.GamePanel;
-import utils.JGameConfig;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -10,13 +9,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import static utils.JGameConfig.*;
-import static utils.JGameConfig.tileSize;
 
 public class TileManager {
 
     GamePanel gamePanel;
     Tile[] tile;
-    int mapTile[][];
+    int[][] mapTile;
 
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;

@@ -6,17 +6,14 @@ import tile.TileManager;
 import utils.JGameConfig;
 import utils.JGameUtils;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
 import static utils.JGameConfig.*;
 
 public class GamePanel extends JPanel implements Runnable{
-//    private final BufferedImage backgroundImage = ImageIO.read(getClass().getResourceAsStream("/environment/background.png"));
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
@@ -44,10 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
 
             long t0 = System.currentTimeMillis();
 
-            //Updating information on screen
             update();
 
-            //Drawing the screen with the updated information
             repaint();
 
             try {
@@ -72,7 +67,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-//        g.drawImage(backgroundImage, 0, 0, null);
 
         Graphics2D g2d = (Graphics2D) g;
 

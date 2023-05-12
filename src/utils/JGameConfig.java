@@ -1,9 +1,5 @@
 package utils;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
 public class JGameConfig {
     //Window config
     final static int originalTileSize = 16;
